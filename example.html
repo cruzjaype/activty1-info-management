@@ -1,38 +1,106 @@
-<input type="text" id="team1Key"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-<button onclick="ready()">Ready</button>
+<style>
+    *{
+        margin: 5px;
+        padding: 5px;
+    }
+</style>
+
+<body>
+    <div>
+        <div style="display: flex; justify-content: space-between;">
+            <h1>Activity 2</h1>
+            <h1>Buzzer</h1>
+        </div>
+        <div style="display: flex; justify-content: space-around;">
+            <div style="display: flex; flex-direction: column;">
+                <div style="display: flex;">
+                    <div>
+                        <h6>P1 Name</h6>
+                        <input type="text" id="txtName">
+                    </div>
+                    <div> 
+                        <h6>P1 Key</h6>
+                        <input type="text" id="txtKey">
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <button id="ready1">ready</button>
+                    <h3 style="border-color: black; background-color: gray; height: 10rem; text-align: center;" id="name1">Player 1</h3>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <div style="display: flex;">
+                    <div>
+                        <h6>P2 Name</h6>
+                        <input type="text" id="txtName2">
+                    </div>
+                    <div> 
+                        <h6>P2 Key</h6>
+                        <input type="text" id="txtKey2">
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <button id="ready2">ready</button>
+                    <h3 style="border-color: black; background-color: gray; height: 10rem; text-align: center;" id="name2">Player 2</h3>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <h1>Made by CRUZ JAYPE 123</h1>
+        </div>
+    </div>
+</body>
 
 <script>
+    
+    let name;
+    let ky;
+    
+    document.getElementById("ready1").onclick = function(){
 
-let pressed false;
+        name = document.getElementById("txtName").value;
+        document.getElementById("name1").textContent = name;
 
-document.getElementById('team1Key').value = localStorage.getItem('team1Key');
+        ky = document.getElementById("txtKey").value;
 
-if(localStorage.getItem('team1Key') !==' && localStorage.getItem('team1Key') != null) { 
-document.getElementById('team1Key').value = localStorage.getItem('team1Key');
-}
-else {
-document.getElementById('team1Key').value = 'a';
-}
+        document.addEventListener('keydown', function(e) {
+            if(e.key == ky){
+                ky = document.getElementById("name1").style.backgroundColor = "blue";
+            }
+            
+        })
 
-function ready() { 
-localStorage.setItem('team1Key', document.getElementById('team1Key').value);
-pressed = false;
-}
+        document.getElementById("ready1").disabled = true;
+    }
 
-document.addEventListener('keydown', function(e) {
-if (!pressed) {
-if(e.key == document.getElementById('team1Key').value) {
-document.getElementById('team1').style.backgroundColor = 'red';
-pressed = true;
-}
-else if(e.key == '1') {
-document.getElementById('team2').style.backgroundColor = 'blue';
-pressed = true;
- }
-}
-}};
+    let name1;
+    let ky1;    
 
+
+    document.getElementById("ready2").onclick = function(){
+
+        name1 = document.getElementById("txtName2").value;
+        document.getElementById("name2").textContent = name1;
+
+        ky1 = document.getElementById("txtKey2").value;
+
+        document.addEventListener('keydown', function(e) {
+            if(e.key == ky1){
+                ky1 = document.getElementById("name2").style.backgroundColor = "blue";
+            }
+            
+        })
+
+        document.getElementById("ready2").disabled = true;
+    }   
+        
 </script>
-</body>
 </html>
