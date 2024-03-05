@@ -1,0 +1,38 @@
+<input type="text" id="team1Key"/>
+
+<button onclick="ready()">Ready</button>
+
+<script>
+
+let pressed false;
+
+document.getElementById('team1Key').value = localStorage.getItem('team1Key');
+
+if(localStorage.getItem('team1Key') !==' && localStorage.getItem('team1Key') != null) { 
+document.getElementById('team1Key').value = localStorage.getItem('team1Key');
+}
+else {
+document.getElementById('team1Key').value = 'a';
+}
+
+function ready() { 
+localStorage.setItem('team1Key', document.getElementById('team1Key').value);
+pressed = false;
+}
+
+document.addEventListener('keydown', function(e) {
+if (!pressed) {
+if(e.key == document.getElementById('team1Key').value) {
+document.getElementById('team1').style.backgroundColor = 'red';
+pressed = true;
+}
+else if(e.key == '1') {
+document.getElementById('team2').style.backgroundColor = 'blue';
+pressed = true;
+ }
+}
+}};
+
+</script>
+</body>
+</html>
